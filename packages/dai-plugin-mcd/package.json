@@ -1,0 +1,36 @@
+{
+  "name": "@makerdao/dai-plugin-mcd",
+  "description": "Plugin to add Multi-Collateral Dai support to dai.js",
+  "version": "1.8.4-alpha.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "unpkg": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "jsdelivr": "dist/dai-plugin-mcd.esm.js",
+  "module": "dist/dai-plugin-mcd.umd.production.min.js",
+  "scripts": {
+    "build": "yarn clean && tsdx build --format cjs,esm,umd && ./scripts/copy-files.sh",
+    "clean": "rm -rf ./dist",
+    "prepublishOnly": "yarn build",
+    "testchain": "../../scripts/run-testchain.sh",
+    "coverage": "yarn test --coverage",
+    "test": "yarn testchain --ci jest --runInBand",
+    "test:debug": "yarn testchain --ci node --inspect-brk ../../node_modules/.bin/jest --runInBand",
+    "test:kovan": "export NETWORK='kovan' && yarn test --config ./test/config/jestIntegrationConfig.json",
+    "test:goerli": "export NETWORK='goerli' && yarn test --config ./test/config/jestIntegrationConfig.json",
+    "test:integration": "export NETWORK='test' && yarn test --config ./test/config/jestIntegrationConfig.json"
+  },
+  "peerDependencies": {
+    "@makerdao/dai": "^0.42",
+    "@makerdao/services-core": "^0.11.3"
+  },
+  "dependencies": {
+    "@makerdao/currency": "^0.9.10",
+    "@makerdao/dai": "^0.42.3-alpha.1",
+    "@makerdao/services-core": "^0.11.4-alpha.0",
+    "bignumber.js": "^8.1.1",
+    "rxjs": "^6.5.4"
+  },
+  "types": "typings/index.d.ts",
+  "gitHead": "689f3670142282c9483c74d5658f60161d4287bb"
+}
